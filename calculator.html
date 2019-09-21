@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>简易计算器</title>
+</head>
+<body>
+        <div id="calculator" v-cloak>
+             <input v-model="firstNumber" >
+             <select v-model="currentComputed">
+                 <option v-for="item of character" >{{item}}</option>
+             </select>
+             <input v-model="lastNumber" >
+              <span>=</span>
+             <input v-model="result" >
+
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+   var app = new Vue({
+        el: '#calculator',
+        data: {
+            firstNumber:"",
+            currentComputed:"", 
+            character:["+","-","×","÷"],
+            lastNumber:"",
+        },
+        computed:{
+            result:function(){
+                switch(this.currentComputed){
+                    case "+": 
+                       return Number(this.firstNumber)+Number(this.lastNumber);
+                       break;
+                    case "-": 
+                        return Number(this.firstNumber)-Number(this.lastNumber);
+                        break;
+                    case "×": 
+                        return Number(this.firstNumber)*Number(this.lastNumber);
+                        break;
+                    case "÷": 
+                        return Number(this.firstNumber)/Number(this.lastNumber);
+                        break;
+                }
+            }
+        }
+})
+
+    </script>
+</body>
+</html>
